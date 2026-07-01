@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +9,14 @@ namespace TicTacToe
 {
     internal class Program
     {
-    
+
 
         public class clsTicTocToe_Main
         {
             enum enWinner { Player1 = 1, Player2 = 2, Computer = 3, Draw = 4 };
 
             enWinner _Winner;
-          
+
 
 
             bool _GameOver = false;
@@ -37,7 +37,7 @@ namespace TicTacToe
             struct stXOPlaces
 
             {
-               
+
 		        public bool N1 ;
                 public bool N2 ;
                 public bool N3 ;
@@ -59,7 +59,7 @@ namespace TicTacToe
             private stLinesTextColors _linesTextColors;
 
 
-         
+
             private stXOPlaces _XOPlaces;
             private string _WinnerName()
             {
@@ -103,7 +103,7 @@ namespace TicTacToe
                 _XOPlaces.N9 = true;
         }
 
-        
+
             private short _ComputerChoice()
             {
                 int RandomNumber = 0;
@@ -169,9 +169,9 @@ namespace TicTacToe
                         IsValid = true;
                         break;
                     }
-                
+
                 }
-             
+
 
                     return (short)RandomNumber;
                 }
@@ -317,7 +317,7 @@ namespace TicTacToe
                     Choice = Console.ReadLine();
                 }
 
-              
+
                 return Convert.ToInt16(Choice);
 
                    }
@@ -329,7 +329,7 @@ namespace TicTacToe
                 Choice = Console.ReadLine();
                 while (!_IsValidNumber(Choice))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; 
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please enter a number!");
                     Console.ResetColor();
                     Choice = Console.ReadLine();
@@ -337,13 +337,13 @@ namespace TicTacToe
 
                 while (!_ChekTheChoice(Convert.ToInt16(Choice)))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; 
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Invalid! Enter Again ?");
                     Console.ResetColor();
                     Choice = Console.ReadLine();
                 }
 
-               
+
                 return Convert.ToInt16(Choice);
 
             }
@@ -357,12 +357,12 @@ namespace TicTacToe
                               _PlacesScreen.Place5, _PlacesScreen.Place6, _PlacesScreen.Place7,
                               _PlacesScreen.Place8, _PlacesScreen.Place9, _linesTextColors._Line1TextColor, _linesTextColors._Line2TextColor, _linesTextColors._Line3TextColor);
 
-                
+
                 TicTacToe_Screen.SetScreen();
 
-                     
+
                 return _GameOver = _ChekWinner();
-              
+
             }
 
             private void _SelectTheCorectPlace(short Place, short Player)
@@ -418,7 +418,7 @@ namespace TicTacToe
                 {
                     _linesTextColors._Line1TextColor = "All";
                     _Winner = enWinner.Player1;
-                   
+
                     return true;
                 }
                 if (_PlacesScreen.Place4 == "X" && _PlacesScreen.Place5 == "X" && _PlacesScreen.Place6 == "X")
@@ -489,7 +489,7 @@ namespace TicTacToe
                     _linesTextColors._Line1TextColor = "All";
 
                     _Winner = (_Player2IsComputer) ? enWinner.Computer : enWinner.Player2;
-                   
+
                     return true;
                 }
                 if (_PlacesScreen.Place4 == "O" && _PlacesScreen.Place5 == "O" && _PlacesScreen.Place6 == "O")
@@ -559,7 +559,7 @@ namespace TicTacToe
            private bool _ChekWinner()
             {
 
-              
+
 
                 if (_Player1WinProbabilities() || _Player2WinProbabilities() || _Counter == 9)
                 {
@@ -580,8 +580,8 @@ namespace TicTacToe
                     _Counter++;
                     _SelectTheCorectPlace(Choice, 1);
                     if (_GameScreen())
-                    { 
-                        return true; 
+                    {
+                        return true;
                     };
 
                     if (_Player2IsComputer)
@@ -594,13 +594,13 @@ namespace TicTacToe
                         Choice = _Player2Choice();
                         _Counter++;
                     }
-    
+
                     _SelectTheCorectPlace(Choice, 2);
                     _GameScreen();
 
-                   
+
                 }
-                
+
                 return true;
             }
 
@@ -622,12 +622,12 @@ namespace TicTacToe
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
-                       
+
                         Console.Write(_WinnerName()+"\n");
 
                         Console.ResetColor();
                     }
-                  
+
                 }
                 else
                 {
@@ -636,7 +636,7 @@ namespace TicTacToe
                     Console.ResetColor();
                 }
 
-                
+
 
             }
             private void _RestartGame()
@@ -663,7 +663,7 @@ namespace TicTacToe
 
                 _linesTextColors._Line1TextColor = null;
                 _linesTextColors._Line2TextColor = null;
-                _linesTextColors._Line3TextColor = null;    
+                _linesTextColors._Line3TextColor = null;
 
                 _Player2IsComputer = false;
                 _Counter = 0;
@@ -671,7 +671,7 @@ namespace TicTacToe
 
             private void _ChooseThePlayer2()
             {
-               
+
                 Console.WriteLine("\nYou Want To Play With The Computer Or Your Friend?\n");
 
                 Console.Write("Computer   "); Console.ForegroundColor = ConsoleColor.Blue; Console.Write("  [1]"); Console.ResetColor();
@@ -682,7 +682,7 @@ namespace TicTacToe
 
                 while (!_IsValidNumber(choice) || (Convert.ToInt16(choice) < 1 || Convert.ToInt16(choice) > 2))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red; 
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Invalid Number! Enter Again?");
                     Console.ResetColor();
 
@@ -700,7 +700,7 @@ namespace TicTacToe
 
                 _GameScreen();
 
-            
+
 
                 if (Rounds())
                 {
@@ -735,7 +735,7 @@ namespace TicTacToe
 
                 clsTicTocToe_Main obj = new clsTicTocToe_Main();
                 obj.StartGame();
-              
+
 
 
                 Console.WriteLine("\n\n\n\n\n");
